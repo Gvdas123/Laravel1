@@ -70,6 +70,6 @@ class CarsController extends Controller
     public function destroy(string $id)
     {
         Car::destroy($id);
-        return redirect('owners.show')->with('flash_message',"Owner deleted!");
+        return redirect('owner.show')->with('flash_message',"Owner deleted!");
     }
 }

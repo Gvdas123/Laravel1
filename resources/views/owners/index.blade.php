@@ -5,11 +5,16 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-headre">
+                    <p class="fh">Hello :  {{ Auth::user()->name }}</p>
+                    <br/>
+                    <a class="fh" class="nav-link" href="{{ route('signout') }}">Logout</a>
                     <h2>CRUD</h2>
 </div>
 <div class="card-body">
+@if (Auth::user()->role==0)
     <a href="{{url('/owner/create')}}" class="btn btn-success btn-sm" title="Add new owner">Add New Owner</a>
     <a href="{{url('/car/create')}}" class="btn btn-success btn-sm" title="Add new car">Add New Car</a>
+    @endif
     <br/>
     <br/>
    <form method="post" action="{{route('owner.search')}}">
@@ -44,6 +49,7 @@
         <td>{{$item->Age}}</td>
 <td>
 <a href="{{url('/owner/'.$item->id)}}" title="View Owners" class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i>View Cars</botton></a>
+@if (Auth::user()->role==0)
 <a href="{{url('/owner/'.$item->id. '/edit')}}" title="Edit Owners" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit </botton></a>
 <form method="post" action="{{ url('/owner'.'/'.$item->id)}}" accept-charset="UTF-8" style="display:inline">
 {{method_field('DELETE')}}
@@ -51,7 +57,7 @@
 <button type="submit" class="btn btn-danger btn-sm" title="Delete Owner" onclick="return confirm('Confirm Delete?')"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Delete </botton>
 
 </form>
-
+@endif
 </td>
 </tr>
 @endforeach
@@ -63,3 +69,8 @@
 </div>
 </div>
 </div>
+<style>
+    .fh{
+        float: right;
+    }
+    </style>
