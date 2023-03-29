@@ -5,17 +5,17 @@
             <div class="card">
                 <div class="card-headre">
 <div class="card" style="margin:20px;">
-<div class="card-header">Create New Owner</div>
+<div class="card-header">{{__("Add New Owner")}}</div>
 <div class="card-body">
     <form action="{{url('owner')}}" method="post">
         {!! csrf_field()!!}
-        <label>Name</label></br>
+        <label>{{__("Name")}}</label></br>
         <input type="text" name="Name" id="Name" class="form-control"></br>
-        <label>Surname</label></br>
+        <label>{{__("Surname")}}</label></br>
         <input type="text" name="Surname" id="Surname" class="form-control"></br>
-        <label>Phone Number</label></br>
+        <label>{{__("Phone Number")}}</label></br>
         <input type="text" name="Phone_Number" id="Phone_Number" class="form-control"></br>
-        <label>Age</label></br>
+        <label>{{__("Age")}}</label></br>
         <input type="text" name="Age" id="Age" class="form-control"></br>
         <input type="submit" value="Save" class="btn btn-primary btn-sm"></br>
 </div>

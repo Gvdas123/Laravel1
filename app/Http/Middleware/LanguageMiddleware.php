@@ -13,7 +13,7 @@ class LanguageMiddleware
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         if ($request->session()->get('lang')){
             App::setLocale($request->session()->get('lang'));

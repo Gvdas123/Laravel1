@@ -8,7 +8,7 @@
                             <a href="{{ route('setLanguage','lt') }}" class="nav-link">LT</a>
                         </li>
                         <li class="nav-item">
-                            <a href="" class="nav-link">EN</a>
+                            <a href="{{ route('setLanguage','en') }}" class="nav-link">EN</a>
                         </li>
 
     <nav class="navbar navbar-light navbar-expand-lg mb-5" style="background-color: #0dcaf0;">
@@ -25,7 +25,7 @@
                         <a class="nav-link" href="{{ route('login') }}">{{ __("Login") }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                        <a class="nav-link" href="{{ route('register') }}">{{__("Register")}}</a>
                     </li>
                     
                 </ul>
