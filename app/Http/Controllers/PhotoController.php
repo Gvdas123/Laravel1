@@ -3,27 +3,25 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Car;
-use App\Models\Owner;
 use App\Models\Picture;
-class CarsController extends Controller
+class PhotoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
-    { 
-        $Cars=Car::all();
+    {
+        $Img=Picture::all();
         
-        return view('owners.index')->with('cars',$Cars);
+        return view('owners.index')->with('img',$Img);
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    {  
-        return view('owners.createcar', ["Cars" => Owner::get() ]);
-
+    {
+        return view('owners.createimg', ["Img" => Car::get() ]);
     }
 
     /**
@@ -32,9 +30,17 @@ class CarsController extends Controller
     public function store(Request $request)
     {
         $input1=$request->all();
-        Car::create($input1);
-        return redirect('owner')->with('flash_message','Car Addedd!');
+        if ($request->hasFile('image')){
+            $input2 = $request->file('image');
+            foreach( $input2 as $item){
 
+                $filename = $item->store('public/img');
+                
+                Picture::create(['image'=>$filename,'Cars_id'=>$input1['Cars_id']]);
+        }
+        }
+        
+        return redirect('owner');
     }
 
     /**
@@ -42,9 +48,8 @@ class CarsController extends Controller
      */
     public function show(string $id)
     {
-        $car=Car::find($id);
-        return view('owners.show')->with('cars',$car);
-        
+        $img=Picture::find($id);
+        return view('owners.show')->with('img',$img);
     }
 
     /**
@@ -52,8 +57,7 @@ class CarsController extends Controller
      */
     public function edit(string $id)
     {
-        $car = Car::find($id);
-        return view('owners.editcar')->with('cars',$car);
+        //
     }
 
     /**
@@ -61,10 +65,7 @@ class CarsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $car=Car::find($id);
-        $input=$request->all();
-        $car->update($input);
-        return redirect('owner.show')->with('flas_message','Ownner Updated!');
+        //
     }
 
     /**
@@ -72,7 +73,6 @@ class CarsController extends Controller
      */
     public function destroy(string $id)
     {
-        Car::destroy($id);
-        return redirect('owner.show')->with('flash_message',"Owner deleted!");
+        //
     }
 }

@@ -21,6 +21,6 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-        Owner::factory()->count(70)->hasCars(rand(1,3))->create();
+        Owner::factory()->count(100)->hasCars(rand(1,3))->create();
     }
 }

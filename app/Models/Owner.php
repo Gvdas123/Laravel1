@@ -11,9 +11,10 @@ class Owner extends Model
     protected $table='_owners';
     protected $pimaryKey='id';
     protected $fillable=['Name','Surname','Phone_Number','Age'];
-   
+    
     public function cars(){
     return $this->hasMany(Car::class,'Owners_id');}
+
 public function scopefilter(Builder $query,$filter){
 if($filter->Name!=null){
     $query->where('Name','like',"%$filter->Name%");
