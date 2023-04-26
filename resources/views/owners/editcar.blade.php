@@ -4,7 +4,11 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-headre">
+<<<<<<< HEAD
 <div class="card"> 
+=======
+<div class="card">
+>>>>>>> 9d9c3cedc4f6380bf8aa68b902aa27d49c4fe0cf
     <div class="card-header">{{__("Edit Car")}}</div>
         <div class="body">
             <form action="{{url('owner/'.$cars->id)}}" method="post">

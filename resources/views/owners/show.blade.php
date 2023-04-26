@@ -9,11 +9,17 @@
     <div class="card-body">
         <h5 class="card-title">{{__("Name")}}: {{$owner->Name}}</h5>
         <h5 class="card-title">{{__("Surname")}}: {{$owner->Surname}}</h5>
+<<<<<<< HEAD
         <a href="{{url('/img/create')}}" class="btn btn-success btn-sm" title="Add new owner">Add New Picture</a>
         <table class="table">
             <thead>
                 <tr> 
                     <th>Pictures</th>
+=======
+        <table class="table">
+            <thead>
+                <tr>
+>>>>>>> 9d9c3cedc4f6380bf8aa68b902aa27d49c4fe0cf
                     <th>{{__("Brand")}}</th>
                     <th>{{__("Model")}}</th>
                     <th>{{__("Registration Number")}}</th>
