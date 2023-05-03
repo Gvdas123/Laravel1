@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Owner;
 use App\Models\Car;
 class OwnersController extends Controller
-{
+{ 
+
     /**
      * Display a listing of the resource.
      */
@@ -49,7 +50,10 @@ class OwnersController extends Controller
     public function edit(string $id)
     {
      $owner = Owner::find($id);
-     return view('owners.edit')->with('owners',$owner);
+     
+     $this->authorize('update', $owner);
+     
+    return view('owners.edit')->with('owners',$owner);
     }
 
     /**
@@ -58,16 +62,21 @@ class OwnersController extends Controller
     public function update(Request $request, string $id)
     {
         $owner=Owner::find($id);
+         if (! $request->user()->can('update',$owner)){
+            return redirect()->route("owners.index");
+         }
         $input=$request->all();
         $owner->update($input);
-        return redirect('owner')->with('flas_message','Ownner Updated!');
+        return redirect('owner')->with('flas_message','Owner Updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
+    public function destroy(string $id, Request $request){ 
+        if (! $request->user()->can('delete',Owner::find($id))){
+        return redirect()->route("owners.index");
+     }
         Owner::destroy($id);
         return redirect('owner')->with('flash_message',"Owner deleted!");
     }

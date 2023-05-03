@@ -5,10 +5,7 @@ use App\Http\Controllers\OwnersController;
 use App\Http\Controllers\CarsController;
 use App\Http\Controllers\CustAuthController;
 use App\Http\Controllers\LanguageController;
-<<<<<<< HEAD
 use App\Http\Controllers\PhotoController;
-=======
->>>>>>> 9d9c3cedc4f6380bf8aa68b902aa27d49c4fe0cf
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,8 +31,5 @@ Route::post('postsignup', [CustAuthController::class, 'regsave'])->name('postsig
 Route::post("/owner/search", [OwnersController::class,'search'])->name('owner.search');
 Route::resource("/owner", OwnersController::class)->middleware('LoggedIn');
 Route::resource("/car", CarsController::class)->middleware('LoggedIn');
-<<<<<<< HEAD
 Route::resource("/img", PhotoController::class)->middleware('LoggedIn');
-=======
->>>>>>> 9d9c3cedc4f6380bf8aa68b902aa27d49c4fe0cf
 Route::get('/setLanguage/{language}', [LanguageController::class, 'setLanguage'])->name("setLanguage");

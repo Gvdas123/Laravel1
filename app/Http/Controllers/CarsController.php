@@ -64,7 +64,7 @@ class CarsController extends Controller
         $car=Car::find($id);
         $input=$request->all();
         $car->update($input);
-        return redirect('owner.show')->with('flas_message','Ownner Updated!');
+        return redirect('owners.show')->with('flas_message','Ownner Updated!');
     }
 
     /**
@@ -73,6 +73,6 @@ class CarsController extends Controller
     public function destroy(string $id)
     {
         Car::destroy($id);
-        return redirect('owner.show')->with('flash_message',"Owner deleted!");
+        return redirect('owners.show')->with('flash_message',"Owner deleted!");
     }
 }
